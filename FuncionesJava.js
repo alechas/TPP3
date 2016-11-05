@@ -147,7 +147,26 @@ function DespacharAuto()
 }
 function AgregarAuto()
 {
-	alert("agregar auto");
+  var pagina = "nexo.php";
+  var patente = $("#patente").val();
+  var marca = $("#marca").val();
+  var color = $("#color").val();
+
+    $.ajax({
+        type: 'POST',
+        url: pagina,
+        dataType: "text",
+        data: {queHago: "CargarAuto" , patente: patente, marca:marca, color: color },
+        async: true
+        })
+        .then( 
+            function(respuesta) 
+            {   alert(respuesta);
+                //$("#container").load(respuesta + ".php"); 
+            }, 
+        function(respuesta) { alert( respuesta ); }
+        );
+
 }
 
 function Ingresar()

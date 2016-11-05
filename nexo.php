@@ -1,13 +1,15 @@
 <?php
 require_once"Clases/Usuario.php";
+require_once"Clases/Auto.php";
 
 $queHago = isset($_POST['queHago']) ? $_POST['queHago'] : NULL;
 
 switch ($queHago) {
 
     case "AutosEstacionados":
-    	
-    	echo "frmAutosEstacionados";
+        //$_POST['autos'] = Auto::TraerTodosLosAutos();   	
+    	//echo $_POST['autos'] = Auto::TraerTodosLosAutos();
+        echo "frmAutosEstacionados";
     	break;
 
     case "ImportesFacturados":
@@ -49,6 +51,11 @@ switch ($queHago) {
 
     	break;
 
+    case "CargarAuto":
+
+        $respuesta = Auto::InsertarAuto($_POST['patente'],$_POST['marca'],$_POST['color']);
+        echo $respuesta;
+        break;
     }
 
 ?>

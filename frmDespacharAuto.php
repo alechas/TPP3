@@ -2,7 +2,7 @@
 <head>
 <title>Estacionamiento</title>
 </head>
-<body>
+<body>	hacer una grilla con un boton para despachar
 		<script type="text/javascript" src="java.js"></script>
 		<script type="text/javascript" src="java.js"></script>
 
