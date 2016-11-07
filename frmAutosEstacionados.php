@@ -23,12 +23,20 @@
 			<script type='text/javascript' src='FuncionesJava.js'></script>";   	
 
 	$autos = Auto::TraerTodosLosAutos();
-	foreach ($autos as $au){
+	//var_dump($autos);
 
-  	
+		
+	foreach ($autos as $au){
+		$conboton = "<td><button class=btn btn-danger name=$au->patente onclick=Despachar('";
+		$conB = "')>Despachar</button></td>";
+
+  		//die();
 	echo	"<tr>";
-	if($au->estado == 'I')
-			echo		"<td><button class='btn btn-danger' name='Despachar' onclick='Despachar($au->patente)'>Despachar</button></td>";
+
+	if($au->estado == 'I'){
+		$pat=trim($au->patente," ");
+		echo  $conboton."$pat".$conB; }
+			//echo		"<td><button class=btn btn-danger name=$au->patente onclick=Despachar( '$au->patente' )>Despachar</button></td>";
 
 	else
 			echo		"<td>            </td>";				

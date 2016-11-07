@@ -128,7 +128,7 @@ function IngresarAuto()
 function Despachar(patente)
 {
 
-    alert("despacharrrr");
+    alert("despacharxxx");
 
 }
 
