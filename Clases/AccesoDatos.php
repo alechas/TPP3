@@ -7,7 +7,6 @@ class AccesoDatos
     private function __construct()
     {
         try { 
-            echo "Crear conexión a TP";
             //$this->objetoPDO = new PDO('mysql:host=localhost;dbname=u725565040_chas;charset=utf8', 'u725565040_chas', '123456', array(PDO::ATTR_EMULATE_PREPARES => false,PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
             $this->objetoPDO = new PDO('mysql:host=localhost;dbname=tp;charset=utf8', 'alechas', '123456', array(PDO::ATTR_EMULATE_PREPARES => false,PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
             $this->objetoPDO->exec("SET CHARACTER SET utf8");

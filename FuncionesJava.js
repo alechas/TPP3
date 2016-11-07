@@ -125,7 +125,7 @@ function IngresarAuto()
 
 }
 
-function Despachar()
+function Despachar(patente)
 {
 
     alert("despacharrrr");

@@ -98,9 +98,6 @@ class Auto
 				return $objetoAccesoDato->RetornarUltimoIdInsertado();
 	 }
 
-
-
-
 	public static function TraerTodosLosAutos()
 	{
 		$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
@@ -111,5 +108,5 @@ class Auto
 		//var_dump($consulta->fetchall(PDO::FETCH_CLASS,"Auto"));
 		return $consulta->fetchall(PDO::FETCH_CLASS,"Auto");
 	}
-	}
+}
 ?>

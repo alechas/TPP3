@@ -2,20 +2,13 @@
 
 		include_once('Clases/Auto.php');
 		include_once('Clases/AccesoDatos.php');
-var_dump($_POST);
-	if(isset($_POST['idparaborrar']))
-	{
-		echo "id para borrar";
-		$resultado = Autos::DespacharAuto($_POST['idparaborrar']);
-	}
+	// var_dump($_POST);
+ 	if(isset($_POST['idparaborrar']))
+ 	{
+ 		echo "id para borrar";
+ 		$resultado = Autos::DespacharAuto($_POST['idparaborrar']);
+ 	}
 
-	echo "       <script type='text/javascript'>
-	        function Despachar(id)
-	        {
-	        	<?php Autos::DespacharAuto(id); ?>
-	        }
-        </script>
-		";
 
 	echo "<table class='table table-hover table-responsive'>
 			<thead>
@@ -26,8 +19,8 @@ var_dump($_POST);
 					<th>  Color     </th>
 					<th>  Estado	</th>
 				</tr> 
-			</thead>";   	
-
+			</thead>
+			<script type='text/javascript' src='FuncionesJava.js'></script>";   	
 
 	$autos = Auto::TraerTodosLosAutos();
 	foreach ($autos as $au){
@@ -35,10 +28,7 @@ var_dump($_POST);
   	
 	echo	"<tr>";
 	if($au->estado == 'I')
-			echo		"
-					<form method='POST' >
-						<td><button class='btn btn-danger' name='Despachar' onclick='Despachar($au->patente)'>Despachar</button></td>
-					</form>";
+			echo		"<td><button class='btn btn-danger' name='Despachar' onclick='Despachar($au->patente)'>Despachar</button></td>";
 
 	else
 			echo		"<td>            </td>";				
@@ -47,13 +37,10 @@ var_dump($_POST);
 					<td>  $au->marca   </td>
 					<td>  $au->color   </td>";
 
-	//echo "$auto->GetPatente $auto->GetMarca $auto->GetColor"   ;
-
-
-			if($au->estado == 'I')
-				echo "<td>  Ingrsado    </td>";
-			else
-				echo "<td>  Desapachado</td>";
+	if($au->estado == 'I')
+		echo "<td>  Ingrsado    </td>";
+	else
+		echo "<td>  Desapachado</td>";
 
 	echo	"	</tr> ";
 	}
