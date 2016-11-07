@@ -128,7 +128,7 @@ function IngresarAuto()
 function Despachar()
 {
 
-    alert("despachar");
+    alert("despacharrrr");
 
 }
 
@@ -169,8 +169,8 @@ function AgregarAuto()
         })
         .then( 
             function(respuesta) 
-            {   alert(respuesta);
-                //$("#container").load(respuesta + ".php"); 
+            {   //alert(respuesta);
+                $("#container").load(respuesta + ".php"); 
             }, 
         function(respuesta) { alert( respuesta ); }
         );
@@ -192,8 +192,8 @@ function Ingresar()
         })
     	.then( 
     		function(respuesta) 
-    		{ 	alert(respuesta + ".php");
-    			//$("#container").load(respuesta + ".php"); 
+    		{ 	//alert(respuesta + ".php");
+    			$("#container").load(respuesta + ".php"); 
     		}, 
   		function(respuesta) { alert( respuesta ); }
 		);
