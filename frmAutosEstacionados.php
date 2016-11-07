@@ -1,47 +1,21 @@
-<html>
-<head>	  
-		<meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-		<!--final de Estilos-->
-		   <meta name="viewport" content="width=device-width, initial-scale=1">
-          <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-
-        <!-- jQuery library -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-
-        <!-- Latest compiled JavaScript -->
-        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-        <link rel="stylesheet" type="text/css" href="estilo.css">
-
-       <script type="text/javascript">
-	        function DespacharAuto(patente)
-	        {
-	        	alert(id);
-	        	document.getElementById('patente').value=id;
-	        	document.frmAutosEstacionados.submit();
-	        }
-        </script>
-</head>
-<body>
- <a class="btn btn-info" href="index.html">Menu principal</a>
 <?php
-	if(isset($_POST['patente']))
+
+		include_once('Clases/Auto.php');
+		include_once('Clases/AccesoDatos.php');
+var_dump($_POST);
+	if(isset($_POST['idparaborrar']))
 	{
-		echo "Debo borrar";
-		include_once('clases/Auto.php');
-		include_once('clases/AccesoDatos.php');
-		$resultado = Auto::DespacharAuto($_POST['patente']);
+		echo "id para borrar";
+		$resultado = Autos::DespacharAuto($_POST['idparaborrar']);
 	}
 
-?>	
-		
-<?php 
-include_once("clases/Auto.php");
-include_once("clases/AccesoDatos.php");
-
-// $datos= cd::TraerTodosLosCds();
-// var_dump($datos);-->
+	echo "       <script type='text/javascript'>
+	        function Despachar(id)
+	        {
+	        	<?php Autos::DespacharAuto(id); ?>
+	        }
+        </script>
+		";
 
 	echo "<table class='table table-hover table-responsive'>
 			<thead>
@@ -53,9 +27,12 @@ include_once("clases/AccesoDatos.php");
 					<th>  Estado	</th>
 				</tr> 
 			</thead>";   	
-	$autos = Auto::TraerTodosLosAutos();
 
+
+	$autos = Auto::TraerTodosLosAutos();
 	foreach ($autos as $au){
+
+  	
 	echo	"<tr>";
 	if($au->estado == 'I')
 			echo		"
@@ -84,7 +61,3 @@ include_once("clases/AccesoDatos.php");
 	echo"</table>";	
 
 ?>
-		</div>
-	</div>
-</body>
-</html>
