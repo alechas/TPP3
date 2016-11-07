@@ -125,6 +125,14 @@ function IngresarAuto()
 
 }
 
+function Despachar()
+{
+
+    alert("despachar");
+
+}
+
+
 function DespacharAuto()
 {
   var pagina = "nexo.php";

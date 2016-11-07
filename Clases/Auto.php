@@ -1,6 +1,7 @@
 <?php
 
 require_once"AccesoDatos.php";
+require_once"Factura.php";
 
 class Auto
 {
@@ -54,14 +55,49 @@ class Auto
 	
 	 public static function InsertarAuto($patente,$marca,$color)
 	 {
-	 			var_dump($auto);
-				$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-				//var_dump($this);
-				$consulta =$objetoAccesoDato->RetornarConsulta("INSERT INTO `autos`(`patente`, `marca`, `color`,`estado`) VALUES('$patente','$marca','$color','I')");
-				$consulta->execute();
-				//return $objetoAccesoDato->RetornarUltimoIdInsertado();
-				var_dump($objetoAccesoDato->RetornarUltimoIdInsertado());
+
+	 			//Obtengo todos los autos
+	 			$autos = Auto::TraerTodosLosAutos();
+	 			foreach ($autos as $au){
+
+					IF($au->patente == $patente)
+					{
+						$autoExistente = $au;
+					}				
+				}
+
+				if ($autoExistente==NULL) {
+
+					$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
+					//var_dump($this);
+					$consulta =$objetoAccesoDato->RetornarConsulta("INSERT INTO `autos`(`patente`, `marca`, `color`,`estado`) VALUES('$patente','$marca','$color','I')");
+					$consulta->execute();
+					//return $objetoAccesoDato->RetornarUltimoIdInsertado();
+					var_dump($objetoAccesoDato->RetornarUltimoIdInsertado());
+				}
+
+				else
+				{
+					$autoExistente->estado = 'I';
+					Auto::ModificarAuto($autoExistente);
+				}
+	
+				//Creo una factura
+				Factura::InsertarFactura($patente);
 	 }
+
+	  public static function DespacharAuto($patente)
+	 {
+				$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
+				//$consulta =$objetoAccesoDato->RetornarConsulta("UPDATE 'autos' set estado=:estado where patente=:patente");
+				$consulta =$objetoAccesoDato->RetornarConsulta("UPDATE `autos` SET `estado`=:estado where patente=:patente");
+
+				$consulta->bindValue(':estado','E', PDO::PARAM_INT);
+				$consulta->bindValue(':patente',$patente, PDO::PARAM_INT);
+				$consulta->execute();		
+				return $objetoAccesoDato->RetornarUltimoIdInsertado();
+	 }
+
 
 
 
