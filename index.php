@@ -34,7 +34,6 @@
         <br>
         <input type="button" onclick="ImportesFacturados()" name= "importes_facturados" id = "importes_facturados" value = "   Importes    ">
         <br>
-        <input type="button" onclick="Usuarios()" name= "usuarios" id = "usuarios" value = "   Usuarios    ">
       </ol>
     </li>
     <!-- END sub menu -->

@@ -87,13 +87,14 @@ function minutos_transcurridos($fecha_i,$fecha_f)
 	$minutos = abs($minutos); $minutos = floor($minutos);
 	return $minutos;
 }
-	// public static function TraerTodasLasFacturas()
-	// {
-	// 	$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
-	// 	$consulta=$objetoAccesoDato->RetornarConsulta("SELECT `patente`, `marca`, `color`, `estado` FROM `autos`");
-	// 	$consulta->execute();
-	// 	return $consulta->fetchall(PDO::FETCH_CLASS,"Auto");
-	// }
+
+	public static function TraerTodasLasFacturas()
+	{
+		$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
+		$consulta=$objetoAccesoDato->RetornarConsulta("SELECT `id`, `patente`, `hora_ingreso`, `hora_egreso` , `facturado` FROM `facturacion`");
+		$consulta->execute();
+		return $consulta->fetchall(PDO::FETCH_CLASS,"Factura");
+	}
 
 }
 
