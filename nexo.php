@@ -37,7 +37,9 @@ switch ($queHago) {
     	break;
 
     case "DespacharAuto":
-    	echo "frmDespacharAuto";
+    	Auto::DespacharAuto($_POST['patente']);
+        echo "frmAutosEstacionados";
+
     	break;
 
     case "Ingresar":

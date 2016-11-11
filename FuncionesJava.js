@@ -127,32 +127,46 @@ function IngresarAuto()
 
 function Despachar(patente)
 {
-
-    alert("despacharxxx");
-
-}
-
-
-function DespacharAuto()
-{
   var pagina = "nexo.php";
 
     $.ajax({
         type: 'POST',
         url: pagina,
         dataType: "text",
-        data: {queHago: "DespacharAuto"},
+        data: {queHago: "DespacharAuto" , patente: patente},
         async: true
         })
-    	.then( 
-    		function(respuesta) 
-    		{ 	//alert(respuesta + ".php");
-    			$("#container").load(respuesta + ".php"); 
-    		}, 
-  		function(respuesta) { alert( respuesta ); }
-		);
+        .then( 
+            function(respuesta) 
+            {   //alert(respuesta + ".php");
+                $("#container").load(respuesta + ".php"); 
+            }, 
+        function(respuesta) { alert( respuesta ); }
+        );
 
 }
+
+
+// function DespacharAuto()
+// {
+//   var pagina = "nexo.php";
+
+//     $.ajax({
+//         type: 'POST',
+//         url: pagina,
+//         dataType: "text",
+//         data: {queHago: "DespacharAuto"},
+//         async: true
+//         })
+//     	.then( 
+//     		function(respuesta) 
+//     		{ 	alert(respuesta + ".php");
+//     			//$("#container").load(respuesta + ".php"); 
+//     		}, 
+//   		function(respuesta) { alert( respuesta ); }
+// 		);
+
+// }
 function AgregarAuto()
 {
   var pagina = "nexo.php";
@@ -170,7 +184,8 @@ function AgregarAuto()
         .then( 
             function(respuesta) 
             {   //alert(respuesta);
-                $("#container").load(respuesta + ".php"); 
+                //$("#container").load(respuesta + ".php");
+                $("#container").load("frmIngresarAuto.php"); 
             }, 
         function(respuesta) { alert( respuesta ); }
         );
@@ -192,8 +207,8 @@ function Ingresar()
         })
     	.then( 
     		function(respuesta) 
-    		{ 	//alert(respuesta + ".php");
-    			$("#container").load(respuesta + ".php"); 
+    		{ 	alert(respuesta + ".php");
+    			//$("#container").load(respuesta + ".php"); 
     		}, 
   		function(respuesta) { alert( respuesta ); }
 		);

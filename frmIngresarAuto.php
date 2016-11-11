@@ -5,11 +5,11 @@
 <body>
 		<script type="text/javascript" src="java.js"></script>
 
-        <input type="text" name= "patente" id = "patente" value = "   Ingrse Patente        ">
+        <input type="text" name= "patente" id = "patente" placeholder= "   Ingrse Patente        ">
         <br>
-        <input type="text" name= "marca" id = "marca" value = "   Ingrse Marca     ">
+        <input type="text" name= "marca" id = "marca" placeholder= "   Ingrse Marca     ">
         <br>
-        <input type="text" name= "color" id = "color" value = "   Ingrse Color     ">
+        <input type="text" name= "color" id = "color" placeholder= "   Ingrse Color     ">
         <br>
         <input type="button" onclick="AgregarAuto()" name= "agregarAuto" id = "agregarAuto" value = "   Agregar    ">
 </body>

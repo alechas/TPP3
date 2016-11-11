@@ -24,7 +24,6 @@
       <ol>
         <input type="button" onclick="IngresarAuto()" name= "ingresar" id = "ingresar" value = "       Ingresar               ">
         <br>
-        <input type="button" onclick="DespacharAuto()" name= "despachar" id = "despachar" value = "       Despachar           ">
       </ol>
     </li>
     <!-- END sub menu -->

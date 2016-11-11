@@ -55,9 +55,10 @@ class Auto
 	
 	 public static function InsertarAuto($patente,$marca,$color)
 	 {
-
+	 			$autoExistente = " ";
 	 			//Obtengo todos los autos
 	 			$autos = Auto::TraerTodosLosAutos();
+	 			
 	 			foreach ($autos as $au){
 
 					IF($au->patente == $patente)
@@ -66,28 +67,26 @@ class Auto
 					}				
 				}
 
-				if ($autoExistente==NULL) {
+				if ($autoExistente->patente == " ") {
 
 					$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
 					//var_dump($this);
 					$consulta =$objetoAccesoDato->RetornarConsulta("INSERT INTO `autos`(`patente`, `marca`, `color`,`estado`) VALUES('$patente','$marca','$color','I')");
 					$consulta->execute();
 					//return $objetoAccesoDato->RetornarUltimoIdInsertado();
-					var_dump($objetoAccesoDato->RetornarUltimoIdInsertado());
 				}
 
 				else
 				{
-					$autoExistente->estado = 'I';
-					Auto::ModificarAuto($autoExistente);
+
+					Auto::ModificarAuto($autoExistente->patente);
 				}
-	
 				//Creo una factura
 				Factura::InsertarFactura($patente);
 	 }
 
 	  public static function DespacharAuto($patente)
-	 {
+	 {			
 				$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
 				//$consulta =$objetoAccesoDato->RetornarConsulta("UPDATE 'autos' set estado=:estado where patente=:patente");
 				$consulta =$objetoAccesoDato->RetornarConsulta("UPDATE `autos` SET `estado`=:estado where patente=:patente");
@@ -95,7 +94,20 @@ class Auto
 				$consulta->bindValue(':estado','E', PDO::PARAM_INT);
 				$consulta->bindValue(':patente',$patente, PDO::PARAM_INT);
 				$consulta->execute();		
-				return $objetoAccesoDato->RetornarUltimoIdInsertado();
+				//return $objetoAccesoDato->RetornarUltimoIdInsertado();
+				Factura::Facturar($patente);
+	 }
+
+	  public static function ModificarAuto($patente)
+	 {
+				$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
+				//$consulta =$objetoAccesoDato->RetornarConsulta("UPDATE 'autos' set estado=:estado where patente=:patente");
+				$consulta =$objetoAccesoDato->RetornarConsulta("UPDATE `autos` SET `estado`=:estado where patente=:patente");
+
+				$consulta->bindValue(':estado','I', PDO::PARAM_INT);
+				$consulta->bindValue(':patente',$patente, PDO::PARAM_INT);
+				$consulta->execute();		
+				//return $objetoAccesoDato->RetornarUltimoIdInsertado();
 	 }
 
 	public static function TraerTodosLosAutos()

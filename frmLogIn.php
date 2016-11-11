@@ -9,12 +9,11 @@
         <input type="text" name= "user" id = "user" value = "<?php 
         															if(isset($_COOKIE['MisUsuariosCK']))
         															  echo $_COOKIE['MisUsuariosCK'];   
-
         													 ?>">
         <br>
-        <input type="text" name= "pass" id = "pass" value = "   Ingrse contraseña     ">
+        <input type="text" name= "pass" id = "pass" placeholder= "   Ingrse contraseña     ">
         <br>
-        <input type="button" onclick="Ingresar()" name= "ingresar" id = "ingresar" value = "   Ingresar    ">
+        <input type="button" onclick="Ingresar()" name= "ingresar" id = "ingresar" placeholder= "   Ingresar    ">
         <br>
         <?php   
           if(isset($_SESSION))

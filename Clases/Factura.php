@@ -38,41 +38,60 @@ class Factura
 
 	 public static function InsertarFactura($patente)
 	 {
-
-	 		$hora = date("h:i:s");
+	 		//$hora = date("h:i:s");
+			$hora = date("Y/m/d H:i:s");
 			$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
 			//var_dump($this);
 			$consulta =$objetoAccesoDato->RetornarConsulta("INSERT INTO `facturacion`(`patente`, `hora_ingreso`, `hora_egreso`,`facturado`) VALUES('$patente','$hora',' ',' ')");
 			$consulta->execute();
 			//return $objetoAccesoDato->RetornarUltimoIdInsertado();
-			var_dump($objetoAccesoDato->RetornarUltimoIdInsertado());
+			//var_dump($objetoAccesoDato->RetornarUltimoIdInsertado());
 
 	 }
 
-	  public static function ModificarFactura($id)
+	  public static function Facturar($patente)
 	 {
-	 			$hora = date("h:i:s");
+	 			$unaFac=Factura::TraerUnaFactura($patente);
+	 			$unaFac->hora_egreso = date("Y/m/d H:i:s");
+				//$unaFac->facturado = Factura::CalcularFactura($unaFac, date("h:i:s"), '30');	
+				$unaFac->facturado = Factura::minutos_transcurridos($unaFac->hora_ingreso, $unaFac->hora_egreso);					
+
+	 			//$hora = date("h:i:s");
 				$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
 				//$consulta =$objetoAccesoDato->RetornarConsulta("UPDATE 'autos' set estado=:estado where patente=:patente");
-				$consulta =$objetoAccesoDato->RetornarConsulta("UPDATE `facturacion` SET `hora_egreso`=:hora_egreso where id=:id");
+				$consulta =$objetoAccesoDato->RetornarConsulta("UPDATE `facturacion` SET `hora_egreso`=:hora_egreso, `facturado`=:facturado where id=:id");
 
-				$consulta->bindValue(':hora_egreso',$hora, PDO::PARAM_INT);
-				$consulta->bindValue(':id',$id, PDO::PARAM_INT);
+				$consulta->bindValue(':hora_egreso',$unaFac->hora_egreso, PDO::PARAM_INT);
+				$consulta->bindValue(':id',$unaFac->id, PDO::PARAM_INT);
+				$consulta->bindValue(':facturado',$unaFac->facturado, PDO::PARAM_INT);
 				$consulta->execute();		
-				return $objetoAccesoDato->RetornarUltimoIdInsertado();
+				//return $objetoAccesoDato->RetornarUltimoIdInsertado();
 	 }
 
+	public static function TraerUnaFactura($patente) 
+	{
+			$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
+			$consulta =$objetoAccesoDato->RetornarConsulta("select  id , patente, hora_ingreso, hora_egreso from facturacion WHERE patente=:patente AND facturado='0'");
+			//$consulta->execute(array($id, $anio));
+			$consulta->bindValue(':patente',$patente, PDO::PARAM_INT);
+			$consulta->execute();
+			$FacBuscado= $consulta->fetchObject('factura');
+      		return $FacBuscado;				
 
+			
+	}
 
-
-	// public static function TraerTodosLosAutos()
+function minutos_transcurridos($fecha_i,$fecha_f)
+{
+	$minutos = (strtotime($fecha_i)-strtotime($fecha_f))/60;
+	$minutos = abs($minutos); $minutos = floor($minutos);
+	return $minutos;
+}
+	// public static function TraerTodasLasFacturas()
 	// {
 	// 	$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
-	// 	//$consulta=$objetoAccesoDato->RetornarConsulta("select patente, marca,color,estado from autos");
-	// 	//$consulta=$objetoAccesoDato->RetornarConsulta("SELECT * FROM `autos`");
 	// 	$consulta=$objetoAccesoDato->RetornarConsulta("SELECT `patente`, `marca`, `color`, `estado` FROM `autos`");
 	// 	$consulta->execute();
-	// 	//var_dump($consulta->fetchall(PDO::FETCH_CLASS,"Auto"));
 	// 	return $consulta->fetchall(PDO::FETCH_CLASS,"Auto");
 	// }
 
