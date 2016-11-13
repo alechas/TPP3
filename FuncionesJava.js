@@ -19,6 +19,8 @@ function AutosEstacionados()
 
 }
 
+
+
 function ImportesFacturados()
 {
   var pagina = "nexo.php";

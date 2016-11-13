@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 <head>
 <title>Estacionamiento</title>
@@ -52,5 +53,13 @@
   <!-- tab panes -->
 </div>
 <!-- END footer -->
+<script>
+function myFunction() {
+    var x = document.getElementById("patente").value;
+    // document.getElementById("marca").innerHTML = x;
+    //$("#patente") = "XXX";
+    document.getElementById("marca").value = x;
+}
+</script>
 </body>
 </html>

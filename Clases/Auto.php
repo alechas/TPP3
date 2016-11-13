@@ -120,5 +120,12 @@ class Auto
 		//var_dump($consulta->fetchall(PDO::FETCH_CLASS,"Auto"));
 		return $consulta->fetchall(PDO::FETCH_CLASS,"Auto");
 	}
+
+	public static function CargarMarca()
+	{   
+    //alert("Pr");
+    	//echo "Ford";
+	}
+
 }
 ?>
