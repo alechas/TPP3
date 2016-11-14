@@ -12,9 +12,9 @@ function AutosEstacionados()
     	.then( 
     		function(respuesta) 
     		{ 	//alert(respuesta + ".php");
-    			$("#container").load(respuesta + ".php"); 
+                    $("#container").load(respuesta + ".php"); 
     		}, 
-  		function(respuesta) { alert( respuesta ); }
+  		function(respuesta) { alert( "No tiene permisos para ver lo facturado" ); }
 		);
 
 }
@@ -34,10 +34,11 @@ function ImportesFacturados()
         })
     	.then( 
     		function(respuesta) 
-    		{ 	//alert(respuesta + ".php");
-    			$("#container").load(respuesta + ".php"); 
+    		{ 	//alert(respuesta);
+                //if(respuesta != "")
+    		    $("#container").load(respuesta + ".php"); 
     		}, 
-  		function(respuesta) { alert( respuesta ); }
+        function(respuesta) { alert( "No tiene permisos para ver lo facturado" ); }
 		);
 
 }
@@ -230,10 +231,54 @@ function Ingresar()
         })
     	.then( 
     		function(respuesta) 
-    		{ 	alert(respuesta + ".php");
-    			//$("#container").load(respuesta + ".php"); 
+    		{ 	alert("Bienvenido!!");
+    			//(respuesta + ".php").load; 
     		}, 
-  		function(respuesta) { alert( respuesta ); }
+  		function(respuesta) { alert( "Error de logueo" ); }
 		);
+}
 
+function IngresarAd()
+{
+  var pagina = "nexo.php";
+  var user = $("#user").val();
+  var pass = $("#pass").val();
+
+    $.ajax({
+        type: 'POST',
+        url: pagina,
+        dataType: "text",
+        data: {queHago: "IngresarAd" , user: user, pass:pass },
+        async: true
+        })
+        .then( 
+            function(respuesta) 
+            {   //alert(respuesta + ".php");
+                //$("#container").load(respuesta + ".php"); 
+            }, 
+        function(respuesta) { alert( respuesta ); }
+        );
+}
+
+
+function IngresarUs()
+{
+  var pagina = "nexo.php";
+  var user = $("#user").val();
+  var pass = $("#pass").val();
+
+    $.ajax({
+        type: 'POST',
+        url: pagina,
+        dataType: "text",
+        data: {queHago: "IngresarUs" , user: user, pass:pass },
+        async: true
+        })
+        .then( 
+            function(respuesta) 
+            {   //alert(respuesta + ".php");
+                //$("#container").load(respuesta + ".php"); 
+            }, 
+        function(respuesta) { alert( respuesta ); }
+        );
 }

@@ -45,8 +45,24 @@
           <input type="button" onclick="LogOut()" name= "logOut" id = "LogOut" value = "   LogOut      ">
         </ol>
 </li>
-    <!-- END sub menu -->
-  </ol>
+<?php
+//session_start();
+  //if($_SESSION['tipo'] == 'admin')
+  // echo "<li class='active_menu_item'><a >Gestión Autos</a>
+  //         <ol>
+  //           <input type='button' onclick='GestionarUsuarios()' name= 'ingresar' id = 'ingresar' value = '       Usuarios               '>
+  //           <br>
+  //         </ol>
+  //       </li>";
+?>
+    <li><a >Usuarios</a>
+        <ol>
+          <input type="button" onclick="ListarUsuarios()" value = "   Listar        ">
+          <br>
+          <input type="button" onclick="AgregarUsuario()" value = "   Agregar      ">
+        </ol>
+    </li>
+
 </div>
 <!-- END header -->
 <div id="container">

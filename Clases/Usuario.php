@@ -9,13 +9,6 @@ class Usuario
 	public $tipo;
 
 
-	public function __construct($us,$pa,$ti)
-	{
-		$this->user = $us;
-		$this->pass = $pa;
-		$this->tipo = $ti;
-	}
-
 	public static function InsertarUsuario($usuario)
 	{
 		$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
@@ -29,13 +22,15 @@ class Usuario
 	
 				
 	}
-	public static function TraerUnUsuario($user) 
+
+	public static function TraerUnUsuario($user,$pass) 
 	{	
 
 		$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-		$consulta =$objetoAccesoDato->RetornarConsulta("select * from usuarios where user =:user");
+		$consulta =$objetoAccesoDato->RetornarConsulta("select * from usuarios where user =:user AND pass =:pass");
 		//$consulta =$objetoAccesoDato->RetornarConsulta("CALL TraerUnaPersona(:id)");
 		$consulta->bindValue(':user', $user, PDO::PARAM_INT);
+		$consulta->bindValue(':pass', $pass, PDO::PARAM_INT);
 		$consulta->execute();
 		//var_dump($consulta);
 		return $consulta->fetchall(PDO::FETCH_CLASS,"usuario");

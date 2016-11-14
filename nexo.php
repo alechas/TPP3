@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once"Clases/Usuario.php";
 require_once"Clases/Auto.php";
 require_once"Clases/Factura.php";
@@ -14,8 +15,14 @@ switch ($queHago) {
     	break;
 
     case "ImportesFacturados":
-    	
-    	echo "frmImportesFacturados";
+        
+        if ($_SESSION['tipo'] == 'admin')
+    	   echo "frmImportesFacturados";
+
+        else
+            header('http/1.0 500 ');
+
+
     	break;
 
     case "Usuarios":
@@ -46,27 +53,38 @@ switch ($queHago) {
     case "Ingresar":
     	//echo setcookie("MisUsuariosCK", $_POST['user']."&".$_POST['user'], time() + (86400 * 30), "/");
     	setcookie("MisUsuariosCK", $_POST['user'], time() + (86400 * 30), "/");
-        $usuario = Usuario::TraerUnUsuario($_POST['user']);
+        $usuario = Usuario::TraerUnUsuario($_POST['user'],$_POST['pass']);
 
+        if (count($usuario) == 0) {
+            header('http/1.0 500 ');
 
-        session_start();
-        $_SESSION['user'] = $_POST['user'];
+        }
+        if ($usuario->tipo == 'a') {
+            $_SESSION['tipo'] = "admin";
+echo "<li class='active_menu_item'><a >Gestión Autos</a>
+          <ol>
+            <input type='button' onclick='GestionarUsuarios()' name= 'ingresar' id = 'ingresar' value = '       Usuarios               '>
+            <br>
+          </ol>
+        </li>";
+        }
 
+        else
+            $_SESSION['tipo'] = $_POST['user'];
 
+        //echo "index";
     	break;
 
     case "IngresarUs":
 
-        session_start();
         $_SESSION['tipo'] = "user";
-
+        echo "index";
         break;
 
     case "IngresarAd":
 
-        session_start();
         $_SESSION['tipo'] = "admin";
-
+        echo "index";
         break;
 
 
@@ -79,6 +97,7 @@ switch ($queHago) {
 
     case "DownloadFacturas":
         Factura::DescargarFacturacion($_POST['facturas']);
+
         break;
     }
 
