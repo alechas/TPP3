@@ -183,11 +183,32 @@ function AgregarAuto()
         data: {queHago: "CargarAuto" , patente: patente, marca:marca, color: color },
         async: true
         })
-        .then( 
+        .then(
             function(respuesta) 
             {   //alert(respuesta);
                 //$("#container").load(respuesta + ".php");
-                $("#container").load("frmIngresarAuto.php"); 
+                $("#container").load("frmAutosEstacionados.php"); 
+                //$("#container").load("frmIngresarAuto.php"); 
+            }, 
+        function(respuesta) { alert( respuesta ); }
+        );
+}
+
+function DescargarFacturación( facturas )
+{
+  var pagina = "nexo.php";
+
+    $.ajax({
+        type: 'POST',
+        url: pagina,
+        dataType: "text",
+        data: {queHago: "DownloadFacturas" , facturas : facturas },
+        async: true
+        })
+        .then(
+            function(respuesta) 
+            {   
+                alert(respuesta);
             }, 
         function(respuesta) { alert( respuesta ); }
         );

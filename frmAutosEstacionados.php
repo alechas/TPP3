@@ -22,7 +22,7 @@
 			</thead>
 			<script type='text/javascript' src='FuncionesJava.js'></script>";   	
 
-	$autos = Auto::TraerTodosLosAutos();
+	$autos = Auto::TraerTodosLosAutosEstacionados();
 	//var_dump($autos);
 
 		

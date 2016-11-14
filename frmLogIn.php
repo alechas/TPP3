@@ -13,7 +13,7 @@
         <br>
         <input type="text" name= "pass" id = "pass" placeholder= "   Ingrse contraseña     ">
         <br>
-        <input type="button" onclick="Ingresar()" name= "ingresar" id = "ingresar" placeholder= "   Ingresar    ">
+        <input type="button" onclick="Ingresar()" name= "ingresar" id = "ingresar" value = "   LogIn                     ">
         <br>
         <?php   
           if(isset($_SESSION))
@@ -21,5 +21,9 @@
               echo "<input type='button' onclick='CrearUsuario()' value = 'Crear usuario'>"
 
         ?>
+        <input type="button" onclick="IngresarUs()" name= "ingresarUs" id = "ingresarUs" value = "   Test Usuario           ">
+        <br>
+        <input type="button" onclick="IngresarAd()" name= "ingresarAd" id = "ingresarAd" value = "   Test Administrador   ">
+        
 </body>
 </html>

@@ -96,6 +96,22 @@ function minutos_transcurridos($fecha_i,$fecha_f)
 		return $consulta->fetchall(PDO::FETCH_CLASS,"Factura");
 	}
 
+public static function DescargarFacturacion($facturacion)
+{
+	//var_dump($facturacion);
+	//var_dump($facturacion);
+	//echo " descargar";
+	var_dump($_POST);
+	$json_string = json_encode($_POST['facturas']) ;
+	$myfile = fopen('Facturacion.json', 'w+');// or die("Error al crear el archivo");
+    
+	fwrite($myfile, $json_string);
+	//fwrite($myfile, $facturacion);
+
+	fclose($myfile);
+
+}
+
 }
 
 ?>

@@ -1,6 +1,7 @@
 <?php
 require_once"Clases/Usuario.php";
 require_once"Clases/Auto.php";
+require_once"Clases/Factura.php";
 
 $queHago = isset($_POST['queHago']) ? $_POST['queHago'] : NULL;
 
@@ -28,7 +29,7 @@ switch ($queHago) {
     	break;
 
     case "LogOut":
-    	
+
     	echo "frmLogOut";
     	break;
 
@@ -44,19 +45,40 @@ switch ($queHago) {
 
     case "Ingresar":
     	//echo setcookie("MisUsuariosCK", $_POST['user']."&".$_POST['user'], time() + (86400 * 30), "/");
-    	echo setcookie("MisUsuariosCK", $_POST['user'], time() + (86400 * 30), "/");
-        session_start();
-        $_SESSION['user'] = $_POST['user'];
-        var_dump($_SESSION);
-        var_dump($_POST);
+    	setcookie("MisUsuariosCK", $_POST['user'], time() + (86400 * 30), "/");
         $usuario = Usuario::TraerUnUsuario($_POST['user']);
 
+
+        session_start();
+        $_SESSION['user'] = $_POST['user'];
+
+
     	break;
+
+    case "IngresarUs":
+
+        session_start();
+        $_SESSION['tipo'] = "user";
+
+        break;
+
+    case "IngresarAd":
+
+        session_start();
+        $_SESSION['tipo'] = "admin";
+
+        break;
+
 
     case "CargarAuto":
 
         $respuesta = Auto::InsertarAuto($_POST['patente'],$_POST['marca'],$_POST['color']);
         echo $respuesta;
+        //echo "frmAutosEstacionados";
+        break;
+
+    case "DownloadFacturas":
+        Factura::DescargarFacturacion($_POST['facturas']);
         break;
     }
 

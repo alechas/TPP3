@@ -1,5 +1,6 @@
 <?php
-require_once"Clases/Factura.php";
+	require_once"Clases/Factura.php";
+	
 	$total_facturado = 0;
 
 	echo "<table class='table table-hover table-responsive'>
@@ -16,7 +17,8 @@ require_once"Clases/Factura.php";
 
 	$facturas = Factura::TraerTodasLasFacturas();
 	//var_dump($facturas);
-		
+
+	$total_facturado = 0;		
 	foreach ($facturas as $fc){
 
 	echo			"<tr>
@@ -29,14 +31,18 @@ require_once"Clases/Factura.php";
 
 	$total_facturado = $total_facturado + $fc->facturado;
 	}
-
-	echo "<tr>
-					<th>  Total facturado  </th>				
-					<th>     </th>		
+	$_POST['facturas'] = $facturas;
+	//var_dump($facturas);
+	//$json_string = json_encode($facturas) ;
+	$fac[] = $facturas;
+	echo "  <script type='text/javascript' src='FuncionesJava.js'></script>
+			<tr>
+					<th>  <button class=btn btn-danger onclick='DescargarFacturación( $fac )'>Descargar</button></th>
+					<th>  Total facturado   </th>		
 					<th>     </th>
 					<th>      </th>
 					<th>  $total_facturado  </th>
-				</tr>";   	
+		  </tr>";   	
 
 	echo"</table>";	
 

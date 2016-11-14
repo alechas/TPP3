@@ -56,6 +56,7 @@ class Auto
 	 public static function InsertarAuto($patente,$marca,$color)
 	 {
 	 			$autoExistente = " ";
+	 			$autoExistente_band = " ";
 	 			//Obtengo todos los autos
 	 			$autos = Auto::TraerTodosLosAutos();
 	 			
@@ -64,10 +65,11 @@ class Auto
 					IF($au->patente == $patente)
 					{
 						$autoExistente = $au;
+						$autoExistente_band = "X";
 					}				
 				}
 
-				if ($autoExistente->patente == " ") {
+				if ($autoExistente_band == " ") {
 
 					$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
 					//var_dump($this);
@@ -116,6 +118,17 @@ class Auto
 		//$consulta=$objetoAccesoDato->RetornarConsulta("select patente, marca,color,estado from autos");
 		//$consulta=$objetoAccesoDato->RetornarConsulta("SELECT * FROM `autos`");
 		$consulta=$objetoAccesoDato->RetornarConsulta("SELECT `patente`, `marca`, `color`, `estado` FROM `autos`");
+		$consulta->execute();
+		//var_dump($consulta->fetchall(PDO::FETCH_CLASS,"Auto"));
+		return $consulta->fetchall(PDO::FETCH_CLASS,"Auto");
+	}
+
+	public static function TraerTodosLosAutosEstacionados()
+	{
+		$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
+		//$consulta=$objetoAccesoDato->RetornarConsulta("select patente, marca,color,estado from autos");
+		//$consulta=$objetoAccesoDato->RetornarConsulta("SELECT * FROM `autos`");
+		$consulta=$objetoAccesoDato->RetornarConsulta("SELECT `patente`, `marca`, `color`, `estado` FROM `autos` WHERE `estado` = 'I' ");
 		$consulta->execute();
 		//var_dump($consulta->fetchall(PDO::FETCH_CLASS,"Auto"));
 		return $consulta->fetchall(PDO::FETCH_CLASS,"Auto");
