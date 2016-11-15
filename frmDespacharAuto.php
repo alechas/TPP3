@@ -8,6 +8,6 @@
 
         <input type="text" name= "patente" id = "patente" value = "   Ingrse Patente        ">
         <br>
-        <input type="button" onclick="DespacharAuto()" name= "despacharAuto" id = "despacharAuto" value = "   Despachar    ">
+        <input class= "button-3d" animated = "glowing" type="button" onclick="DespacharAuto()" name= "despacharAuto" id = "despacharAuto" value = "   Despachar    ">
 </body>
 </html>

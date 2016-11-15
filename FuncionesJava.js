@@ -99,8 +99,8 @@ function LogOut()
         })
     	.then( 
     		function(respuesta) 
-    		{ 	//alert(respuesta + ".php");
-    			$("#container").load(respuesta + ".php"); 
+    		{ 	alert("Bye!");
+    			$("#container").load("frmLogIn.php"); 
     		}, 
   		function(respuesta) { alert( respuesta ); }
 		);
@@ -142,7 +142,8 @@ function Despachar(patente)
         .then( 
             function(respuesta) 
             {   //alert(respuesta + ".php");
-                $("#container").load(respuesta + ".php"); 
+                alert(respuesta);
+                $("#container").load("frmAutosEstacionados.php"); 
             }, 
         function(respuesta) { alert( respuesta ); }
         );
@@ -231,8 +232,9 @@ function Ingresar()
         })
     	.then( 
     		function(respuesta) 
-    		{ 	alert("Bienvenido!!");
-    			//(respuesta + ".php").load; 
+    		{ 	//alert("Bienvenido!!");
+    			alert(respuesta + "pr");
+                //(respuesta + ".php").load; 
     		}, 
   		function(respuesta) { alert( "Error de logueo" ); }
 		);
@@ -361,8 +363,8 @@ function AgregarUsuarioSQL()
         })
         .then( 
             function(respuesta) 
-            {   alert(respuesta);
-                //$("#container").load(respuesta + ".php"); 
+            {   //alert(respuesta);
+                $("#container").load("frmUsuarios.php"); 
             }, 
         function(respuesta) { alert( respuesta ); }
         );    
@@ -387,4 +389,50 @@ function AgregarUsuario()
             }, 
         function(respuesta) { alert( respuesta ); }
         );        
+}
+
+function myFunction() {
+    var x = document.getElementById("patente").value;
+    document.getElementById("marca").value = x;
+   
+  var pagina = "nexo.php";
+  var patente = $("#patente").val();
+
+    $.ajax({
+        type: 'POST',
+        url: pagina,
+        dataType: "text",
+        data: {queHago: "ChequearPatente" , patente:patente },
+        async: true
+        })
+      .then( 
+        function(respuesta) 
+        {   alert(respuesta);
+                //if(respuesta != "")
+            //$("#color").load(respuesta + ".php");
+            var res = respuesta.split("&");
+            alert(res); 
+        }, 
+        function(respuesta) {  }
+    );
+  // var pagina = "nexo.php";
+  // var user = $("#user").val();
+  // var pass = $("#pass").val();
+  // var tipo = $("#tipo").val();
+
+  //   $.ajax({
+  //       type: 'POST',
+  //       url: pagina,
+  //       dataType: "text",
+  //       data: {queHago: "AgregarUsuarioSQL" , user:user , pass:pass , tipo:tipo},
+  //       async: true
+  //       })
+  //       .then( 
+  //           function(respuesta) 
+  //           {   //alert(respuesta);
+  //               $("#container").load("frmUsuarios.php"); 
+  //           }, 
+  //       function(respuesta) { alert( respuesta ); }
+  //       );    
+
 }

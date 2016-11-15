@@ -37,7 +37,7 @@ var_dump($_POST);
 	if($au->estado == 'I')
 			echo		"
 					<form method='POST' >
-						<td><button class='btn btn-danger' name='Despachar' onclick='Despachar($au->patente)'>Despachar</button></td>
+						<td><button class= 'button-3d' animated = 'glowing' name='Despachar' onclick='Despachar($au->patente)'>Despachar</button></td>
 					</form>";
 
 	else

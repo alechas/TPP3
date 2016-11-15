@@ -66,6 +66,7 @@ class Factura
 				$consulta->bindValue(':facturado',$unaFac->facturado, PDO::PARAM_INT);
 				$consulta->execute();		
 				//return $objetoAccesoDato->RetornarUltimoIdInsertado();
+	 			echo "A $1 el minuto, se debe abonar: $ $unaFac->facturado";
 	 }
 
 	public static function TraerUnaFactura($patente) 
@@ -91,7 +92,7 @@ function minutos_transcurridos($fecha_i,$fecha_f)
 	public static function TraerTodasLasFacturas()
 	{
 		$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
-		$consulta=$objetoAccesoDato->RetornarConsulta("SELECT `id`, `patente`, `hora_ingreso`, `hora_egreso` , `facturado` FROM `facturacion`");
+		$consulta=$objetoAccesoDato->RetornarConsulta("SELECT `id`, `patente`, `hora_ingreso`, `hora_egreso` , `facturado` FROM `facturacion` WHERE facturado != 0");
 		$consulta->execute();
 		return $consulta->fetchall(PDO::FETCH_CLASS,"Factura");
 	}

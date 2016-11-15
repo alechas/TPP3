@@ -6,6 +6,7 @@
 <!-- Google Fonts  -->
 <link href='http://fonts.googleapis.com/css?family=Parisienne' rel='stylesheet' type='text/css'>
 <!-- CSS Files  -->
+<link rel="stylesheet" type="text/css" href="buttons.css">
 <link rel="stylesheet" type="text/css" media="screen" href="css/style.css">
 <link rel="stylesheet" type="text/css" media="screen" href="menu/css/simple_menu.css">
 <!-- Contact Form --> 
@@ -23,7 +24,7 @@
     <li class="active_menu_item"><a >Gestión Autos</a>
       <!-- sub menu -->
       <ol>
-        <input type="button" onclick="IngresarAuto()" name= "ingresar" id = "ingresar" value = "       Ingresar               ">
+        <input class= "button-rounded" animated = "glowing" type="button" onclick="IngresarAuto()" name= "ingresar" id = "ingresar" value = "       Ingresar               ">
         <br>
       </ol>
     </li>
@@ -31,18 +32,18 @@
     <li><a >Grillas</a>
       <!-- sub menu -->
       <ol>
-        <input type="button" onclick="AutosEstacionados()" name= "autos_estacionados" id = "autos_estacionados" value = "   Autos        ">
+        <input class= "button-rounded" animated = "glowing" type="button" onclick="AutosEstacionados()" name= "autos_estacionados" id = "autos_estacionados" value = "   Autos        ">
         <br>
-        <input type="button" onclick="ImportesFacturados()" name= "importes_facturados" id = "importes_facturados" value = "   Importes    ">
+        <input class= "button-rounded" animated = "glowing" type="button" onclick="ImportesFacturados()" name= "importes_facturados" id = "importes_facturados" value = "   Importes    ">
         <br>
       </ol>
     </li>
     <!-- END sub menu -->
     <li><a >Acceso</a>
         <ol>
-          <input type="button" onclick="LogIn()" name= "login" id = "login" value = "   LogIn        ">
+          <input class= "button-rounded" animated = "glowing" type="button" onclick="LogIn()" name= "login" id = "login" value = "   LogIn        ">
           <br>
-          <input type="button" onclick="LogOut()" name= "logOut" id = "LogOut" value = "   LogOut      ">
+          <input class= "button-rounded" animated = "glowing" type="button" onclick="LogOut()" name= "logOut" id = "LogOut" value = "   LogOut      ">
         </ol>
 </li>
 <?php
@@ -57,9 +58,9 @@
 ?>
     <li><a >Usuarios</a>
         <ol>
-          <input type="button" onclick="ListarUsuarios()" value = "   Listar        ">
+          <input class= "button-rounded" animated = "glowing" type="button" onclick="ListarUsuarios()" value = "   Listar        ">
           <br>
-          <input type="button" onclick="AgregarUsuario()" value = "   Agregar      ">
+          <input class= "button-rounded" animated = "glowing" type="button" onclick="AgregarUsuario()" value = "   Agregar      ">
         </ol>
     </li>
 
@@ -69,28 +70,6 @@
   <!-- tab panes -->
 </div>
 <!-- END footer -->
-<script>
-function myFunction() {
-    // var x = document.getElementById("patente").value;
-    // document.getElementById("marca").value = x;
-// var connection = new ActiveXObject("ADODB.Connection") ;
 
-// var connectionstring="Data Source=<server>;Initial Catalog=<catalog>;User ID=<user>;Password=<password>;Provider=SQLOLEDB";
-
-// connection.Open(connectionstring);
-// var rs = new ActiveXObject("ADODB.Recordset");
-
-// rs.Open("SELECT * FROM table", connection);
-// rs.MoveFirst
-// while(!rs.eof)
-// {
-//    document.write(rs.fields(1));
-//    rs.movenext;
-// }
-
-// rs.close;
-// connection.close; 
-}
-</script>
 </body>
 </html>

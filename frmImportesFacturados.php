@@ -37,7 +37,7 @@
 	//$fac[] = $facturas;
 	echo "  <script type='text/javascript' src='FuncionesJava.js'></script>
 			<tr>
-					<th>  <button class=btn btn-danger onclick='DescargarFacturación( $json_string )'>Descargar</button></th>
+					<th>  <button class= 'button-3d' animated = 'glowing' onclick='DescargarFacturación( $json_string )'>Descargar</button></th>
 					<th>  Total facturado   </th>		
 					<th>     </th>
 					<th>      </th>

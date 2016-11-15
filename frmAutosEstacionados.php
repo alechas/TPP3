@@ -27,7 +27,7 @@
 
 		
 	foreach ($autos as $au){
-		$conboton = "<td><button class=btn btn-danger name=$au->patente onclick=Despachar('";
+		$conboton = "<td><button class= 'button-3d' animated = 'glowing' name=$au->patente onclick=Despachar('";
 		$conB = "')>Despachar</button></td>";
 
   		//die();

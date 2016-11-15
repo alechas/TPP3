@@ -36,8 +36,8 @@ switch ($queHago) {
     	break;
 
     case "LogOut":
-
-    	echo "frmLogOut";
+        $_SESSION['tipo'] = "";
+    	//echo "frmLogOut";
     	break;
 
     case "IngresarAuto":
@@ -46,39 +46,33 @@ switch ($queHago) {
 
     case "DespacharAuto":
     	Auto::DespacharAuto($_POST['patente']);
-        echo "frmAutosEstacionados";
+        //echo "frmAutosEstacionados";
 
     	break;
 
     case "Ingresar":
     	//echo setcookie("MisUsuariosCK", $_POST['user']."&".$_POST['user'], time() + (86400 * 30), "/");
     	setcookie("MisUsuariosCK", $_POST['user'], time() + (86400 * 30), "/");
+        
         $usuario = Usuario::TraerUnUsuario($_POST['user'],$_POST['pass']);
 
         if (count($usuario) == 0) {
             header('http/1.0 500 ');
 
         }
-        if ($usuario->tipo == 'a') {
-            $_SESSION['tipo'] = "admin";
-echo "<li class='active_menu_item'><a >Gestión Autos</a>
-          <ol>
-            <input type='button' onclick='GestionarUsuarios()' name= 'ingresar' id = 'ingresar' value = '       Usuarios               '>
-            <br>
-          </ol>
-        </li>";
-        }
+        if ($usuario[0]->tipo == 'a') {
+            $_SESSION['tipo'] = 'admin';
+            }
 
         else
-            $_SESSION['tipo'] = $_POST['user'];
+            $_SESSION['tipo'] = 'user';
 
-        //echo "index";
     	break;
 
     case "IngresarUs":
 
         $_SESSION['tipo'] = "user";
-        echo "index";
+        
         break;
 
     case "IngresarAd":
@@ -91,7 +85,12 @@ echo "<li class='active_menu_item'><a >Gestión Autos</a>
     case "CargarAuto":
 
         $respuesta = Auto::InsertarAuto($_POST['patente'],$_POST['marca'],$_POST['color']);
-        echo $respuesta;
+        // for ($i=0; $i < 500; $i++) { 
+        //     $pat = $_POST['patente'].$i;
+        //     $respuesta = Auto::InsertarAuto($pat,$_POST['marca'],$_POST['color']);
+
+        // }
+        //echo $respuesta;
         //echo "frmAutosEstacionados";
         break;
 
@@ -122,13 +121,21 @@ echo "<li class='active_menu_item'><a >Gestión Autos</a>
     break;
 
     case "AgregarUsuarioSQL":
-
-         //Usuario::InsertarUsuario($_POST['user'],$_POST['pass'],$_POST['tipo']);      
-        echo "agregar auto";
+        //var_dump($_POST);
+        Usuario::InsertarUsuario($_POST['user'],$_POST['pass'],$_POST['tipo']);      
+        //echo "frmUsuarios";
+    
     break;
 
     default:
     echo "Error";
+
+    case "ChequearPatente":
+        
+        $auto = Auto::TraerUnAuto($_POST['patente']);
+        //var_dump($auto);
+        //echo $auto[0]->color.'&'.$auto[0]->marca;
+        echo $auto[0];
     }
 
 ?>

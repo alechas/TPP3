@@ -12,11 +12,13 @@ class Usuario
 	public static function InsertarUsuario($user,$pass,$tipo)
 	{
 		$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-		$consulta =$objetoAccesoDato->RetornarConsulta("INSERT into usuarios (:user,pass,tipo)values(:user,:pass,:tipo)");
+		//$consulta =$objetoAccesoDato->RetornarConsulta("INSERT into usuarios (:user,pass,tipo)values(:user,:pass,:tipo)");
+		$consulta =$objetoAccesoDato->RetornarConsulta("INSERT INTO `usuarios`(`user`, `pass`, `tipo`) VALUES (:user,:pass,:tipo)");
+
 		//$consulta =$objetoAccesoDato->RetornarConsulta("CALL InsertarUsuario (:user,:pass,:tipo)");
 		$consulta->bindValue(':user',$user, PDO::PARAM_STR);
 		$consulta->bindValue(':pass', $pass, PDO::PARAM_STR);
-		$consulta->bindValue(':dni', $tipo, PDO::PARAM_STR);
+		$consulta->bindValue(':tipo', $tipo, PDO::PARAM_STR);
 		$consulta->execute();		
 		return $objetoAccesoDato->RetornarUltimoIdInsertado();
 	

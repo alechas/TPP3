@@ -6,30 +6,17 @@
 		<script type="text/javascript" src="java.js"></script>
 		<script type="text/javascript" src="java.js"></script>
 
-        <input type="text" name= "user" id = "user" placeholder= "   Ingrse usuario     " 
-                                                    value = "<?php 
-                                                                    if(isset($_POST['usuarioMod']))
-                                                                      echo $_POST['usuarioMod'];   
-                                                             ?>">
+        <input type="text" name= "user" id = "user" placeholder= "   Ingrse usuario     " >
         <br>
-        <input type="text" name= "pass" id = "pass" placeholder= "   Ingrse contraseña     "
-                                                    value = "<?php 
-                                                                    if(isset($_POST['passMod']))
-                                                                      echo $_POST['passMod'];   
-                                                             ?>">
+        <input type="password" name= "pass" id = "pass" placeholder= "   Ingrse contraseña     ">
         <br>
-        <input type="text" name= "tipo" id = "tipo" placeholder= "   Ingrse tipo de usuario"
-                                                    value = "<?php 
-                                                                    if(isset($_POST['tipoMod']))
-                                                                      echo $_POST['tipoMod'];   
-                                                             ?>">
+    <select id = "tipo">
+    <option value='a'> Administrador </option>    
+    <option value='u'> Usuario </option>    
+    </select>
+
         <br>
-        <input type="button" onclick= "<?php 
-                                            if(isset($_POST['usuarioMod']))
-                                              echo 'ModificarUsuario()'. ' value ='.'    Modificar                     ';   
-                                            else
-                                              echo 'AgregarUsuarioSQL()'. ' value ='.'    Agregar                     ';   
-                                       ?>">
+        <input class= "button-3d" animated = "glowing" type="button" onclick= 'AgregarUsuarioSQL()'  value = '       Agregar                     ';   
 
         <br>
         

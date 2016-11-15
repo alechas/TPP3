@@ -16,11 +16,11 @@
 	$usuarios = Usuario::TraerTodosLosUsuarios();
 		
 	foreach ($usuarios as $us){
-		$conboton = "<td><button class=btn btn-danger onclick=BorrarUsuario('";
+		$conboton = "<td><button class= 'button-3d' animated = 'glowing' onclick=BorrarUsuario('";
 		$conB = "')>Borrar</button></td>";
 		$user=trim($us->user," ");
 
-		$conboton2 = "<td><button class=btn btn-danger onclick=CambiarContraseña('";
+		$conboton2 = "<td><button class= 'button-3d' animated = 'glowing' onclick=CambiarContraseña('";
 		$conB2 = "')>Cambiar contraseña</button></td>";
 		echo	"<tr>";
 		echo  $conboton."$user".$conB; 

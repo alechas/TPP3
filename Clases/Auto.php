@@ -140,5 +140,18 @@ class Auto
     	//echo "Ford";
 	}
 
+	public static function TraerUnAuto($patente)
+	{
+		$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
+		//$consulta=$objetoAccesoDato->RetornarConsulta("select patente, marca,color,estado from autos");
+		//$consulta=$objetoAccesoDato->RetornarConsulta("SELECT * FROM `autos`");
+		$consulta=$objetoAccesoDato->RetornarConsulta("SELECT `patente`, `marca`, `color`, `estado` FROM `autos` WHERE patente=:patente");
+	    $consulta->bindValue(':patente',$patente, PDO::PARAM_INT);
+		$consulta->execute();
+		//var_dump($consulta->fetchall(PDO::FETCH_CLASS,"Auto"));
+		return $consulta->fetchall(PDO::FETCH_CLASS,"Auto");
+	}
+
+
 }
 ?>
