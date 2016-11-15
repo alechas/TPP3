@@ -9,19 +9,29 @@ class Usuario
 	public $tipo;
 
 
-	public static function InsertarUsuario($usuario)
+	public static function InsertarUsuario($user,$pass,$tipo)
 	{
 		$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
 		$consulta =$objetoAccesoDato->RetornarConsulta("INSERT into usuarios (:user,pass,tipo)values(:user,:pass,:tipo)");
 		//$consulta =$objetoAccesoDato->RetornarConsulta("CALL InsertarUsuario (:user,:pass,:tipo)");
-		$consulta->bindValue(':user',$usuario->user, PDO::PARAM_STR);
-		$consulta->bindValue(':pass', $usuario->pass, PDO::PARAM_STR);
-		$consulta->bindValue(':dni', $usuario->tipo, PDO::PARAM_STR);
+		$consulta->bindValue(':user',$user, PDO::PARAM_STR);
+		$consulta->bindValue(':pass', $pass, PDO::PARAM_STR);
+		$consulta->bindValue(':dni', $tipo, PDO::PARAM_STR);
 		$consulta->execute();		
 		return $objetoAccesoDato->RetornarUltimoIdInsertado();
 	
 				
 	}
+
+	  public static function BorrarUsuario($user)
+	 {
+				$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
+				$consulta =$objetoAccesoDato->RetornarConsulta("DELETE FROM `usuarios` WHERE user =:user");
+				$consulta->bindValue(':user', $user, PDO::PARAM_INT);
+				$consulta->execute();		
+				//return $objetoAccesoDato->RetornarUltimoIdInsertado();
+	 }
+
 
 	public static function TraerUnUsuario($user,$pass) 
 	{	
@@ -39,6 +49,18 @@ class Usuario
 		// return $usuarioBuscada;	
 					
 	}
+
+		public static function TraerTodosLosUsuarios()
+	{
+		$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
+		//$consulta=$objetoAccesoDato->RetornarConsulta("select patente, marca,color,estado from autos");
+		//$consulta=$objetoAccesoDato->RetornarConsulta("SELECT * FROM `autos`");
+		$consulta=$objetoAccesoDato->RetornarConsulta("SELECT * FROM `usuarios`");
+		$consulta->execute();
+		//var_dump($consulta->fetchall(PDO::FETCH_CLASS,"Auto"));
+		return $consulta->fetchall(PDO::FETCH_CLASS,"usuario");
+	}
+
 
 }
 

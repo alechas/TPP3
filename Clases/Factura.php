@@ -100,13 +100,16 @@ public static function DescargarFacturacion($facturacion)
 {
 	//var_dump($facturacion);
 	//var_dump($facturacion);
+    $json_string = json_encode($facturacion) ;
+
 	//echo " descargar";
-	//var_dump($_POST);
-	$json_string = json_encode($_POST['facturas']) ;
+	//var_dump($facturacion);
+	//$json_string = json_encode($_POST['facturas']) ;
+
 	$myfile = fopen('Facturacion.json', 'w+');// or die("Error al crear el archivo");
     
+	//fwrite($myfile, $json_string);
 	fwrite($myfile, $json_string);
-	//fwrite($myfile, $facturacion);
 
 	fclose($myfile);
 

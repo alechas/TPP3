@@ -31,13 +31,13 @@
 
 	$total_facturado = $total_facturado + $fc->facturado;
 	}
-	$_POST['facturas'] = $facturas;
+	//$_POST['facturas'] = $facturas;
 	//var_dump($facturas);
-	//$json_string = json_encode($facturas) ;
-	$fac[] = $facturas;
+	$json_string = json_encode($facturas) ;
+	//$fac[] = $facturas;
 	echo "  <script type='text/javascript' src='FuncionesJava.js'></script>
 			<tr>
-					<th>  <button class=btn btn-danger onclick='DescargarFacturación( $fac )'>Descargar</button></th>
+					<th>  <button class=btn btn-danger onclick='DescargarFacturación( $json_string )'>Descargar</button></th>
 					<th>  Total facturado   </th>		
 					<th>     </th>
 					<th>      </th>

@@ -1,11 +1,42 @@
 <?php
+		include_once('Clases/Usuario.php');
+		include_once('Clases/AccesoDatos.php');
 
 	echo "<table class='table table-hover table-responsive'>
 			<thead>
 				<tr>
-					<th>  Usuario   </th>				
+					<th>     </th>
+					<th>     </th>
+					<th>  Usuario   </th>
+					<th>  Contraseña</th>
+					<th>  Permisos  </th>				
 				</tr> 
 			</thead>";   	
 
+	$usuarios = Usuario::TraerTodosLosUsuarios();
+		
+	foreach ($usuarios as $us){
+		$conboton = "<td><button class=btn btn-danger onclick=BorrarUsuario('";
+		$conB = "')>Borrar</button></td>";
+		$user=trim($us->user," ");
+
+		$conboton2 = "<td><button class=btn btn-danger onclick=CambiarContraseña('";
+		$conB2 = "')>Cambiar contraseña</button></td>";
+		echo	"<tr>";
+		echo  $conboton."$user".$conB; 
+		echo  $conboton2."$user".$conB2; 
+
+		echo			"<td>  $us->user</td>				
+						 <td>  $us->pass</td>";
+
+	if($us->tipo == 'a')
+		echo "<td>  Administrador    </td>";
+	else
+		echo "<td>  Usuario</td>";
+
+	echo	"	</tr> ";
+	}
+
+	echo"</table>";	
 
 ?>

@@ -99,6 +99,36 @@ echo "<li class='active_menu_item'><a >Gestión Autos</a>
         Factura::DescargarFacturacion($_POST['facturas']);
 
         break;
+
+    case "ListarUsuarios":
+
+        echo "frmUsuarios";
+
+    break;
+
+    case "CambiarContraseña":
+        echo "frmGestionUsuario";
+
+    break;
+
+    case "BorrarUsuario":
+        Usuario::BorrarUsuario($_POST['user']);
+        echo "frmUsuarios";
+
+    break;
+
+    case "AgregarUsuario":
+        echo "frmAltaUsuario";
+    break;
+
+    case "AgregarUsuarioSQL":
+
+         //Usuario::InsertarUsuario($_POST['user'],$_POST['pass'],$_POST['tipo']);      
+        echo "agregar auto";
+    break;
+
+    default:
+    echo "Error";
     }
 
 ?>

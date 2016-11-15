@@ -282,3 +282,109 @@ function IngresarUs()
         function(respuesta) { alert( respuesta ); }
         );
 }
+
+function ListarUsuarios()
+{
+  var pagina = "nexo.php";
+
+    $.ajax({
+        type: 'POST',
+        url: pagina,
+        dataType: "text",
+        data: {queHago: "ListarUsuarios"  },
+        async: true
+        })
+        .then( 
+            function(respuesta) 
+            {   //alert(respuesta);
+                $("#container").load(respuesta + ".php"); 
+            }, 
+        function(respuesta) { alert( respuesta ); }
+        );    
+}
+
+function BorrarUsuario(user)
+{//alert("borrar usuario");
+  var pagina = "nexo.php";
+
+    $.ajax({
+        type: 'POST',
+        url: pagina,
+        dataType: "text",
+        data: {queHago: "BorrarUsuario" , user:user },
+        async: true
+        })
+        .then( 
+            function(respuesta) 
+            {   //alert(respuesta);
+                $("#container").load(respuesta + ".php"); 
+            }, 
+        function(respuesta) { alert( respuesta ); }
+        );    
+
+}
+
+function CambiarContraseña(user)
+{
+  var pagina = "nexo.php";
+
+    $.ajax({
+        type: 'POST',
+        url: pagina,
+        dataType: "text",
+        data: {queHago: "CambiarContraseña" , user:user },
+        async: true
+        })
+        .then( 
+            function(respuesta) 
+            {   //alert(respuesta);
+                //$("#container").load(respuesta + ".php"); 
+            }, 
+        function(respuesta) { alert( respuesta ); }
+        );    
+
+}
+
+function AgregarUsuarioSQL()
+{
+  var pagina = "nexo.php";
+  var user = $("#user").val();
+  var pass = $("#pass").val();
+  var tipo = $("#tipo").val();
+
+    $.ajax({
+        type: 'POST',
+        url: pagina,
+        dataType: "text",
+        data: {queHago: "AgregarUsuarioSQL" , user:user , pass:pass , tipo:tipo},
+        async: true
+        })
+        .then( 
+            function(respuesta) 
+            {   alert(respuesta);
+                //$("#container").load(respuesta + ".php"); 
+            }, 
+        function(respuesta) { alert( respuesta ); }
+        );    
+
+}
+
+function AgregarUsuario()
+{
+  var pagina = "nexo.php";
+
+    $.ajax({
+        type: 'POST',
+        url: pagina,
+        dataType: "text",
+        data: {queHago: "AgregarUsuario"  },
+        async: true
+        })
+        .then( 
+            function(respuesta) 
+            {   //alert(respuesta);
+                $("#container").load(respuesta + ".php"); 
+            }, 
+        function(respuesta) { alert( respuesta ); }
+        );        
+}
