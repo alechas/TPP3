@@ -7,8 +7,15 @@ class AccesoDatos
     private function __construct()
     {
         try { 
-            //$this->objetoPDO = new PDO('mysql:host=localhost;dbname=u725565040_chas;charset=utf8', 'u725565040_chas', '123456', array(PDO::ATTR_EMULATE_PREPARES => false,PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
-            $this->objetoPDO = new PDO('mysql:host=localhost;dbname=tp;charset=utf8', 'alechas', '123456', array(PDO::ATTR_EMULATE_PREPARES => false,PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+            // Tuars
+            //$this->objetoPDO = new PDO('mysql:host=mysql.tuars.com;dbname=u725565040_chas;charset=utf8', 'u725565040_chas', '123456', array(PDO::ATTR_EMULATE_PREPARES => false,PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+
+            // Local
+            //$this->objetoPDO = new PDO('mysql:host=localhost;dbname=tp;charset=utf8', 'alechas', '123456', array(PDO::ATTR_EMULATE_PREPARES => false,PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+
+            // Hostinger
+            $this->objetoPDO = new PDO('mysql:host=ftp.alexischastp.esy.es ;dbname=u249622730_tp;charset=utf8', 'u249622730_ale', 'lalala123', array(PDO::ATTR_EMULATE_PREPARES => false,PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+            
             $this->objetoPDO->exec("SET CHARACTER SET utf8");
             } 
         catch (PDOException $e) { 

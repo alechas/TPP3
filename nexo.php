@@ -14,6 +14,13 @@ switch ($queHago) {
         echo "frmAutosEstacionados";
     	break;
 
+    case "TodosAutosEstacionados":
+        //$_POST['autos'] = Auto::TraerTodosLosAutos();     
+        //echo $_POST['autos'] = Auto::TraerTodosLosAutos();
+        
+        echo "frmTodosLosAutos";
+        break;
+
     case "ImportesFacturados":
         
         if ($_SESSION['tipo'] == 'admin')
@@ -134,8 +141,26 @@ switch ($queHago) {
         
         $auto = Auto::TraerUnAuto($_POST['patente']);
         //var_dump($auto);
-        //echo $auto[0]->color.'&'.$auto[0]->marca;
-        echo $auto[0];
+        echo $auto[0]->color.'&'.$auto[0]->marca;
+    break;
+
+    case "ModificarUsuario":
+        //var_dump($_POST);
+        //echo "paso valor";
+        //echo $_POST['user'];
+        Usuario::initUM($_POST['user']);
+        echo "frmModificarUsuario";
+
+    break;
+
+    case "ModificarUsuarioSQL":
+
+        Usuario::ModificarUsuario($_POST['user'],$_POST['pass'],$_POST['tipo']);
+        echo "frmUsuarios";
+
+    break;
+
+
     }
 
 ?>

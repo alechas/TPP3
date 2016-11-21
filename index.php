@@ -21,7 +21,7 @@
 <div class="header">
   <!-- Main Menu -->
   <ol id="menu">
-    <li class="active_menu_item"><a >Gestión Autos</a>
+    <li class="active_menu_item"><a >      Gestión Autos       </a>
       <!-- sub menu -->
       <ol>
         <input class= "button-rounded" animated = "glowing" type="button" onclick="IngresarAuto()" name= "ingresar" id = "ingresar" value = "       Ingresar               ">
@@ -32,9 +32,11 @@
     <li><a >Grillas</a>
       <!-- sub menu -->
       <ol>
-        <input class= "button-rounded" animated = "glowing" type="button" onclick="AutosEstacionados()" name= "autos_estacionados" id = "autos_estacionados" value = "   Autos        ">
+        <input class= "button-rounded" animated = "glowing" type="button" onclick="AutosEstacionados()" name= "autos_estacionados" id = "autos_estacionados" value = " Autos        ">
         <br>
-        <input class= "button-rounded" animated = "glowing" type="button" onclick="ImportesFacturados()" name= "importes_facturados" id = "importes_facturados" value = "   Importes    ">
+        <input class= "button-rounded" animated = "glowing" type="button" onclick="TodosAutosEstacionados()" name= "autos_estacionado" id = "autos_estacionado" value = " Autos(todos)">
+        <br>
+        <input class= "button-rounded" animated = "glowing" type="button" onclick="ImportesFacturados()" name= "importes_facturados" id = "importes_facturados" value = " Importes    ">
         <br>
       </ol>
     </li>

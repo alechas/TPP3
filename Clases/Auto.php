@@ -10,6 +10,7 @@ class Auto
 	public $color;
 	public $estado;
 
+
   	public function GetPatente()
 	{
 		return $this->patente;

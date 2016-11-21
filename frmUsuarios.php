@@ -21,7 +21,7 @@
 		$user=trim($us->user," ");
 
 		$conboton2 = "<td><button class= 'button-3d' animated = 'glowing' onclick=CambiarContraseña('";
-		$conB2 = "')>Cambiar contraseña</button></td>";
+		$conB2 = "')>Modificar</button></td>";
 		echo	"<tr>";
 		echo  $conboton."$user".$conB; 
 		echo  $conboton2."$user".$conB2; 

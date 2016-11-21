@@ -19,6 +19,27 @@ function AutosEstacionados()
 
 }
 
+function TodosAutosEstacionados()
+{
+  var pagina = "nexo.php";
+
+    $.ajax({
+        type: 'POST',
+        url: pagina,
+        dataType: "text",
+        data: {queHago: "TodosAutosEstacionados"},
+        async: true
+        })
+        .then( 
+            function(respuesta) 
+            {   //alert(respuesta + ".php");
+                 $("#container").load(respuesta + ".php"); 
+            }, 
+        function(respuesta) { alert( "No tiene permisos para ver lo facturado" ); }
+        );
+
+}
+
 
 
 function ImportesFacturados()
@@ -334,13 +355,13 @@ function CambiarContraseña(user)
         type: 'POST',
         url: pagina,
         dataType: "text",
-        data: {queHago: "CambiarContraseña" , user:user },
+        data: {queHago: "ModificarUsuario" ,user:user },
         async: true
         })
-        .then( 
+        .then(
             function(respuesta) 
             {   //alert(respuesta);
-                //$("#container").load(respuesta + ".php"); 
+                $("#container").load(respuesta + ".php"); 
             }, 
         function(respuesta) { alert( respuesta ); }
         );    
@@ -365,6 +386,30 @@ function AgregarUsuarioSQL()
             function(respuesta) 
             {   //alert(respuesta);
                 $("#container").load("frmUsuarios.php"); 
+            }, 
+        function(respuesta) { alert( respuesta ); }
+        );    
+
+}
+
+function ModificarUsuarioSQL(user)
+{
+
+  var pagina = "nexo.php";
+  var pass = $("#pass").val();
+  var tipo = $("#tipo").val();
+
+    $.ajax({
+        type: 'POST',
+        url: pagina,
+        dataType: "text",
+        data: {queHago: "ModificarUsuarioSQL" , user:user , pass:pass , tipo:tipo},
+        async: true
+        })
+        .then( 
+            function(respuesta) 
+            {   alert(respuesta);
+                //$("#container").load("frmUsuarios.php"); 
             }, 
         function(respuesta) { alert( respuesta ); }
         );    

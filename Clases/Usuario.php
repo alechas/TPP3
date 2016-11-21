@@ -8,6 +8,13 @@ class Usuario
 	public $pass;
 	public $tipo;
 
+	protected static $userMod;
+
+	public static function initUM($value) { //echo "valor".$value; 
+											self::$userMod = $value; }
+
+	public static function getUM() { return self::$userMod; }
+
 
 	public static function InsertarUsuario($user,$pass,$tipo)
 	{
@@ -21,9 +28,20 @@ class Usuario
 		$consulta->bindValue(':tipo', $tipo, PDO::PARAM_STR);
 		$consulta->execute();		
 		return $objetoAccesoDato->RetornarUltimoIdInsertado();
-	
-				
+					
 	}
+
+	  public static function ModificarUsuario($user,$pass,$tipo)
+	 {
+				$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
+				//$consulta =$objetoAccesoDato->RetornarConsulta("UPDATE 'autos' set estado=:estado where patente=:patente");
+				$consulta =$objetoAccesoDato->RetornarConsulta("UPDATE `usuarios` SET `pass`=:pass, `tipo`=:tipo  where `user`=:user");
+				$consulta->bindValue(':user',$user, PDO::PARAM_INT);
+				$consulta->bindValue(':pass',$pass, PDO::PARAM_INT);
+				$consulta->bindValue(':tipo',$tipo, PDO::PARAM_INT);
+				$consulta->execute();
+				//return $objetoAccesoDato->RetornarUltimoIdInsertado();
+	 }
 
 	  public static function BorrarUsuario($user)
 	 {
