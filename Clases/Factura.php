@@ -54,7 +54,7 @@ class Factura
 	 			$unaFac=Factura::TraerUnaFactura($patente);
 	 			$unaFac->hora_egreso = date("Y/m/d H:i:s");
 				//$unaFac->facturado = Factura::CalcularFactura($unaFac, date("h:i:s"), '30');	
-				$unaFac->facturado = Factura::minutos_transcurridos($unaFac->hora_ingreso, $unaFac->hora_egreso);					
+				$unaFac->facturado = minutos_transcurridos($unaFac->hora_ingreso, $unaFac->hora_egreso);					
 
 	 			//$hora = date("h:i:s");
 				$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
