@@ -231,7 +231,7 @@ function DescargarFacturación( facturas )
         .then(
             function(respuesta) 
             {   
-                alert(respuesta);
+                //alert(respuesta);
             }, 
         function(respuesta) { alert( respuesta ); }
         );
@@ -408,8 +408,8 @@ function ModificarUsuarioSQL(user)
         })
         .then( 
             function(respuesta) 
-            {   alert(respuesta);
-                //$("#container").load("frmUsuarios.php"); 
+            {   //alert(respuesta);
+                $("#container").load("frmUsuarios.php"); 
             }, 
         function(respuesta) { alert( respuesta ); }
         );    
@@ -437,8 +437,8 @@ function AgregarUsuario()
 }
 
 function myFunction() {
-    var x = document.getElementById("patente").value;
-    document.getElementById("marca").value = x;
+    //var x = document.getElementById("patente").value;
+    //document.getElementById("marca").value = x;
    
   var pagina = "nexo.php";
   var patente = $("#patente").val();
@@ -447,37 +447,32 @@ function myFunction() {
         type: 'POST',
         url: pagina,
         dataType: "text",
-        data: {queHago: "ChequearPatente" , patente:patente },
+        data: {queHago: "ChequearPatenteMarca" , patente:patente },
         async: true
         })
       .then( 
         function(respuesta) 
-        {   alert(respuesta);
-                //if(respuesta != "")
-            //$("#color").load(respuesta + ".php");
-            var res = respuesta.split("&");
-            alert(res); 
+        {   //alert(
+            document.getElementById("marca").value = respuesta;
+            
         }, 
         function(respuesta) {  }
     );
-  // var pagina = "nexo.php";
-  // var user = $("#user").val();
-  // var pass = $("#pass").val();
-  // var tipo = $("#tipo").val();
 
-  //   $.ajax({
-  //       type: 'POST',
-  //       url: pagina,
-  //       dataType: "text",
-  //       data: {queHago: "AgregarUsuarioSQL" , user:user , pass:pass , tipo:tipo},
-  //       async: true
-  //       })
-  //       .then( 
-  //           function(respuesta) 
-  //           {   //alert(respuesta);
-  //               $("#container").load("frmUsuarios.php"); 
-  //           }, 
-  //       function(respuesta) { alert( respuesta ); }
-  //       );    
+    $.ajax({
+        type: 'POST',
+        url: pagina,
+        dataType: "text",
+        data: {queHago: "ChequearPatenteColor" , patente:patente },
+        async: true
+        })
+      .then( 
+        function(respuesta) 
+        {   //alert(
+            document.getElementById("color").value = respuesta;
+            
+        }, 
+        function(respuesta) {  }
+    );
 
 }

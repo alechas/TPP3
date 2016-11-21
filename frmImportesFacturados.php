@@ -39,7 +39,7 @@
 			<tr>
 					<th>  <button class= 'button-3d' animated = 'glowing' onclick='DescargarFacturación( $json_string )'>Descargar</button></th>
 					<th>  Total facturado   </th>		
-					<th>     </th>
+					<th>   </th>
 					<th>      </th>
 					<th>  $total_facturado  </th>
 		  </tr>";   	

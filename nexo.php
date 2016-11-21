@@ -137,11 +137,20 @@ switch ($queHago) {
     default:
     echo "Error";
 
-    case "ChequearPatente":
+    case "ChequearPatenteMarca":
         
         $auto = Auto::TraerUnAuto($_POST['patente']);
-        //var_dump($auto);
-        echo $auto[0]->color.'&'.$auto[0]->marca;
+
+        echo $auto[0]->marca;
+
+    break;
+
+    case "ChequearPatenteColor":
+        
+        $auto = Auto::TraerUnAuto($_POST['patente']);
+
+        echo $auto[0]->color;
+
     break;
 
     case "ModificarUsuario":
