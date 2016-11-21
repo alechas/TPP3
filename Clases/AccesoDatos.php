@@ -14,7 +14,7 @@ class AccesoDatos
             //$this->objetoPDO = new PDO('mysql:host=localhost;dbname=tp;charset=utf8', 'alechas', '123456', array(PDO::ATTR_EMULATE_PREPARES => false,PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 
             // Hostinger
-            $this->objetoPDO = new PDO('mysql:host=mysql.hostinger.com.ar ;dbname=u249622730_tp;charset=utf8', 'u249622730_ale', 'lalala123', array(PDO::ATTR_EMULATE_PREPARES => false,PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+            $this->objetoPDO = new PDO('mysql:host=mysql.hostinger.com.ar;dbname=u249622730_tp;charset=utf8','u249622730_ale','lalala123', array(PDO::ATTR_EMULATE_PREPARES => false,PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
             
             $this->objetoPDO->exec("SET CHARACTER SET utf8");
             } 
