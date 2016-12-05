@@ -1,3 +1,4 @@
+
 function AutosEstacionados()
 {
   var pagina = "nexo.php";
@@ -351,6 +352,25 @@ function CambiarContraseña(user)
 {
   var pagina = "nexo.php";
 
+    // $.ajax({
+    //     type: 'POST',
+    //     url: pagina,
+    //     dataType: "text",
+    //     data: {queHago: "ModificarUsuario" ,user:user },
+    //     async: true
+    //     })
+    //     .then(
+    //         function(respuesta) 
+    //         {   //alert(respuesta);
+    //             $("#container").load(respuesta + ".php"); 
+    //         }, 
+    //     function(respuesta) { alert( respuesta ); }
+    //     );    
+    $("#container").load("frmModificarUSuario");
+
+    //Traigo los datos del usuario
+    
+
     $.ajax({
         type: 'POST',
         url: pagina,
@@ -360,11 +380,13 @@ function CambiarContraseña(user)
         })
         .then(
             function(respuesta) 
-            {   //alert(respuesta);
-                $("#container").load(respuesta + ".php"); 
+            {   alert(respuesta);
+                //$("#container").load(respuesta + ".php"); 
             }, 
         function(respuesta) { alert( respuesta ); }
         );    
+
+
 
 }
 

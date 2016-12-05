@@ -153,19 +153,19 @@ switch ($queHago) {
 
     break;
 
-    case "ModificarUsuario":
-        //var_dump($_POST);
-        //echo "paso valor";
-        //echo $_POST['user'];
-        Usuario::initUM($_POST['user']);
-        echo "frmModificarUsuario";
+    // case "ModificarUsuario":
+    //     //var_dump($_POST);
+    //     //echo "paso valor";
+    //     //echo $_POST['user'];
+    //     Usuario::initUM($_POST['user']);
+    //     echo "frmModificarUsuario"; 
 
     break;
 
-    case "ModificarUsuarioSQL":
+    case "ModificarUsuario":
 
-        Usuario::ModificarUsuario($_POST['user'],$_POST['pass'],$_POST['tipo']);
-        echo "frmUsuarios";
+        $us = Usuario::TraerUsuario($_POST['user']);
+        echo $us[0];
 
     break;
 

@@ -70,6 +70,22 @@ class Usuario
 					
 	}
 
+	public static function TraerUsuario($user,$pass) 
+	{	
+
+		$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
+		$consulta =$objetoAccesoDato->RetornarConsulta("select * from usuarios where user =:user");
+		//$consulta =$objetoAccesoDato->RetornarConsulta("CALL TraerUnaPersona(:id)");
+		$consulta->bindValue(':user', $user, PDO::PARAM_INT);
+		$consulta->execute();
+		//var_dump($consulta);
+		return $consulta->fetchall(PDO::FETCH_CLASS,"usuario");
+
+		// $usuarioBuscada= $consulta->fetchObject('user');
+		// return $usuarioBuscada;	
+					
+	}
+
 		public static function TraerTodosLosUsuarios()
 	{
 		$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso();
