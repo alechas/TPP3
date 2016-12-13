@@ -24,7 +24,7 @@
 		$conB2 = "')>Modificar</button></td>";
 		echo	"<tr>";
 		echo  $conboton."$user".$conB; 
-		echo  $conboton2."$user".$conB2; 
+		//echo  $conboton2."$user".$conB2; 
 
 		echo			"<td>  $us->user</td>				
 						 <td>  $us->pass</td>";
